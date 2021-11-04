@@ -1,10 +1,13 @@
 import json
+from json.decoder                 import JSONDecodeError
 
 from django.db.models.query_utils import Q
 from django.http                  import JsonResponse
 from django.views                 import View
 from django.db                    import transaction
-from .models                      import Option, Product, Category, Tag
+
+from .models                      import Product
+#TODO: from users.decorator              import admin_decorator
 
 class ProductView(View):
     def post(self ,request):
@@ -13,11 +16,11 @@ class ProductView(View):
             
             with transaction.atomic():
                 product = Product.objects.create(
-                    name = data['name'],
+                    name        = data['name'],
                     description = data['description'],
-                    is_sold = data['is_sold'],
+                    is_sold     = data['is_sold'],
                     category_id = data['category'],
-                    tag_id = data['tag']
+                    tag_id      = data['tag']
                 )
 
                 product.option_set.create(
@@ -53,13 +56,13 @@ class ProductView(View):
             products = Product.objects.filter(product_filter)[offset:offset+limit]
 
             product_list = [{
-                'id' : product.id,
-                'category' : product.category.name,
-                'name' : product.name,
+                'id'          : product.id,
+                'category'    : product.category.name,
+                'name'        : product.name,
                 'description' : product.description,
-                'isSold' : product.is_sold,
-                'badge' : product.badge,
-                'items' : list(product.option_set.values('id', 'product_id', 'name', 'size', 'price', 'is_sold'))
+                'isSold'      : product.is_sold,
+                'badge'       : product.badge,
+                'items'       : list(product.option_set.values('id', 'product_id', 'name', 'size', 'price', 'is_sold'))
 
             } for product in products]
             
@@ -68,3 +71,61 @@ class ProductView(View):
         except ValueError:
             return JsonResponse({'message' : 'VALUE_ERROR'}, status = 400)
 
+class ProductDetailView(View):
+    def get(self, request, product_id):
+        try:
+            product = Product.objects.get(id=product_id)
+            
+            items = [{
+                'id'        : option.id,
+                'productId' : product_id,
+                'name'      : option.name,
+                'size'      : option.size,
+                'price'     : option.price,
+                'isSold'    : option.is_sold
+            } for option in product.option_set.all()]
+            
+            data = {
+                'id'          : product_id,
+                'category'    : product.category.name,
+                'name'        : product.name,
+                'description' : product.description,
+                'isSold'      : product.is_sold,
+                'badge'       : product.badge,
+                'items'       : items
+            }
+            
+            return JsonResponse({'product': data}, status=200)
+
+        except Product.DoesNotExist:
+            return JsonResponse({'message' : 'PRODUCT_NOT_FOUND'}, status=404)
+        
+        except ValueError:
+            return JsonResponse({'message' : 'VALUE_ERROR'}, status=400)
+
+    #TODO: @admin_decorator
+    def patch(self, request, product_id):
+        try:
+            data = json.loads(request.body)
+
+            if not Product.objects.filter(id=product_id).exists():
+                return JsonResponse({'message':'PRODUCT_NOT_FOUND'}, status=404)
+
+            Product.objects.filter(id=product_id).update(**data)
+
+            return JsonResponse({'message':'UPDATED'}, status=200)
+
+        except JSONDecodeError:
+            return JsonResponse({'message':'JSON_DECODE_ERROR'}, status=400)
+
+    #TODO: @admin_decorator
+    def delete(self, request, product_id):
+
+        if not Product.objects.filter(id=product_id).exists():
+            return JsonResponse({'message':'INVALID_PRODUCT_ID'}, status=404)
+
+        product = Product.objects.get(id=product_id)
+            
+        product.delete()
+        
+        return JsonResponse({'message': 'DELETED'}, status=200)
