@@ -1,11 +1,8 @@
-import json
-from os import RTLD_NODELETE
-import bcrypt
+import json, bcrypt
 
 from django.test  import TestCase, Client
 
 from users.models import User
-
 
 class SigninTest(TestCase):
     def setUp(self):
@@ -16,7 +13,7 @@ class SigninTest(TestCase):
             password     = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8'),
             role         = 'admin'
         )
-    
+
     def tearDown(self):
         User.objects.all().delete()
 
@@ -46,12 +43,12 @@ class SigninTest(TestCase):
             'password' : 'abc1234!',
             'role'     : 'admin'
         }
-        response     = client.post('/users/signin', json.dumps(user), content_type='application/json')
+        response = client.post('/users/signin', json.dumps(user), content_type='application/json')
 
         self.assertEqual(response.status_code, 401)
         self.assertEqual(response.json(), 
             {
-                'message' : 'INVALID_USER_EMAIL'
+                'message' : 'INVALID_EMAIL'
             }
         )
     
@@ -63,12 +60,12 @@ class SigninTest(TestCase):
             'password' : 'abc1234@',
             'role'     : 'admin'
         }
-        response     = client.post('/users/signin', json.dumps(user), content_type='application/json')
+        response = client.post('/users/signin', json.dumps(user), content_type='application/json')
 
         self.assertEqual(response.status_code, 401)
         self.assertEqual(response.json(), 
             {
-                'message' : 'INVALID_USER_PASSWORD'
+                'message' : 'INVALID_PASSWORD'
             }
         )
 
@@ -79,7 +76,7 @@ class SigninTest(TestCase):
             'password' : 'abc1234!',
             'role'     : 'admin'
         }
-        response     = client.post('/users/signin', json.dumps(user), content_type='application/json')
+        response = client.post('/users/signin', json.dumps(user), content_type='application/json')
 
         self.assertEqual(response.status_code, 400)
         self.assertEqual(response.json(), 
@@ -95,7 +92,7 @@ class SigninTest(TestCase):
              'email' : 'user1@gmail.com',
              'role'  : 'admin'
         }
-        response     = client.post('/users/signin', json.dumps(user), content_type='application/json')
+        response = client.post('/users/signin', json.dumps(user), content_type='application/json')
 
         self.assertEqual(response.status_code, 400)
         self.assertEqual(response.json(), 
@@ -107,7 +104,7 @@ class SigninTest(TestCase):
     def test_signinview_post_jsondecod_eerror(self):
         client = Client()
 
-        response     = client.post('/users/signin')
+        response = client.post('/users/signin')
 
         self.assertEqual(response.status_code, 400)
         self.assertEqual(response.json(), 

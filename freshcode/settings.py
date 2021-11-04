@@ -13,11 +13,6 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib     import Path
 from my_settings import SECRET_KEY, DATABASES, ALGORITHM
 
-import pymysql
-
-
-pymysql.install_as_MySQLdb
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -27,8 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = SECRET_KEY
-ALGORITHM = ALGORITHM
-
+ALGORITHM  = ALGORITHM
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -86,7 +80,6 @@ WSGI_APPLICATION = 'freshcode.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = DATABASES
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
