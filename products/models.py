@@ -19,6 +19,7 @@ class Product(TimeStampModel):
     name        = models.CharField(max_length=100)
     description = models.TextField()
     is_sold     = models.BooleanField(default=False)
+    badge       = models.CharField(max_length=50, null=True)
     category    = models.ForeignKey('Category', on_delete=models.CASCADE)
     tag         = models.ForeignKey('Tag', on_delete=models.CASCADE)
 
