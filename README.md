@@ -55,7 +55,7 @@ https://documenter.getpostman.com/view/17676214/UVC2H9AU
 ### 상품관리
 - 사용자는 로그인시에(header에 token이 있는 상태) 상품조회만 가능하도록 하였습니다. 
 - 관리자는 로그인시에(header에 token이 있는 상태) 상품 추가/수정/삭제가 가능하도록 하였습니다. 
-- 상품조회의 경우 query string을 이용한 pagination, Q객체와 __contains를 이용한 상품검색, 카테고리 필터링, 정렬 등의 기능을 구현하였습니다.
+- 상품조회의 경우 query string을 이용한 pagination, Q객체와 __contains를 이용한 상품검색, 카테고리 필터링 등의 기능을 구현하였습니다.
 
 ### DOCKER
 
@@ -74,8 +74,57 @@ https://documenter.getpostman.com/view/17676214/UVC2H9AU
 ## 설치 및 실행 방법
 
 ### Local 개발 및 테스트용
+
+1. miniconda를 설치한다. (https://docs.conda.io/en/latest/miniconda.html)
+2. 해당프로젝트를 clone 하고, 프로젝트 폴더로 들어간다.
+```
+git clone https://github.com/palza4dev/wanted-freshcode-assignment.git
+cd wanted-freshcode-assignment
+```
+3. 가상 환경 생성 후 프로젝트에 사용한 python package를 받는다.
+```
+conda create -n freshcode python=3.8
+conda activate freshcode
+pip install -r requirements.txt
+```
+4. .dockerenv.local_dev 파일을 만들어서 안에 다음과 같은 내용을 입력한다. manage.py와 같은 폴더에 생성한다.
+```
+# .dockerenv.local_dev
+
+DJANGO_SECRECT_KEY='django프로젝트 SECRECT_KEY'
+```
+5. docker-compose를 통해서 db와 서버를 실행시킨다.
+```
+docker-compose -f docker-compose-local-dev.yml up
+```
+6. 만약 백그라운드에서 실행하고 싶을 시 -d 옵션을 추가한다.
+```
+docker-compose -f docker-compose-local-dev.yml up -d
+```
+
 ### 배포용
 
+1. 해당프로젝트를 clone 하고, 프로젝트 폴더로 들어간다.
+```
+git clone https://github.com/palza4dev/wanted-freshcode-assignment.git
+cd wanted-freshcode-assignment
+```
+2. .dockerenv.deploy 파일을 만들어서 안에 다음과 같은 내용을 입력한다. manage.py와 같은 폴더에 생성한다.
+```
+# .dockerenv.deploy
+
+DJANGO_SECRECT_KEY='django프로젝트 SECRECT_KEY'
+DB_PORT=DB포트번호
+DB_NAME='DB이름'
+```
+3. docker-compose를 통해서 db와 서버를 실행시킨다.
+```
+docker-compose -f docker-compose-deploy.yml up
+```
+4. 만약 백그라운드에서 실행하고 싶을 시 ```-d``` 옵션을 추가한다.
+```
+docker-compose -f docker-compose-deploy.yml up -d
+```
 ## 폴더 구조
 ```bash
 
