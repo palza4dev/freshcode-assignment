@@ -8,19 +8,23 @@ from django.db                    import transaction
 
 from .models                      import Product
 #TODO: from users.decorator              import admin_decorator
+from users.decorator              import admin_decorator, signin_decorator
+from .models                      import Option, Product, Category, Tag
 
 class ProductView(View):
+    @admin_decorator
+    @signin_decorator
     def post(self ,request):
         try:
             data = json.loads(request.body)
             
             with transaction.atomic():
-                product = Product.objects.create(
-                    name        = data['name'],
-                    description = data['description'],
-                    is_sold     = data['is_sold'],
-                    category_id = data['category'],
-                    tag_id      = data['tag']
+                product, created = Product.objects.get_or_create(
+                    name         = data['name'],
+                    description  = data['description'],
+                    is_sold      = data['is_sold'],
+                    category_id  = data['category'],
+                    tag_id       = data['tag']
                 )
 
                 product.option_set.create(
@@ -40,9 +44,8 @@ class ProductView(View):
             product_filter = Q()
             
             search_word    = request.GET.get('search-word', '')
-            product_type   = request.GET.get('tag', '')
 
-            if search_word or product_type:
+            if search_word:
                 product_filter.add(Q(name__contains=search_word) | Q(description__contains=search_word), product_filter.AND)
 
             category = int(request.GET.get('category', 0))
@@ -50,8 +53,8 @@ class ProductView(View):
             if category:
                 product_filter.add(Q(category_id=category), product_filter.AND)
 
-            offset   = request.GET.get('offset', 0)
-            limit    = request.GET.get('limit', 5)
+            offset   = int(request.GET.get('offset', 0))
+            limit    = int(request.GET.get('limit', 5))
 
             products = Product.objects.filter(product_filter)[offset:offset+limit]
 
@@ -62,7 +65,8 @@ class ProductView(View):
                 'description' : product.description,
                 'isSold'      : product.is_sold,
                 'badge'       : product.badge,
-                'items'       : list(product.option_set.values('id', 'product_id', 'name', 'size', 'price', 'is_sold'))
+                'items'       : list(product.option_set.values('id', 'product_id', 'name', 'size', 'price', 'is_sold')),
+                'tags'        : {'name' : product.tag.name, 'type' : product.tag.type},
 
             } for product in products]
             
