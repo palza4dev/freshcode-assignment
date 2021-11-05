@@ -52,14 +52,34 @@ https://documenter.getpostman.com/view/17676214/UVC2H9AU
 ### 상품관리
 - 사용자는 로그인시에(header에 token이 있는 상태) 상품조회만 가능하도록 하였습니다. 
 - 관리자는 로그인시에(header에 token이 있는 상태) 상품 추가/수정/삭제가 가능하도록 하였습니다. 
-- 상품조회의 경우 query string을 이용한 pagination, 상품검색, Q객체를 이용한 카테고리 필터링, 정렬 등의 기능을 구현하였습니다.
+- 상품 조회의 경우 query string을 이용한 pagination, 상품검색, Q객체를 이용한 카테고리 필터링, 정렬 등의 기능을 구현하였습니다.
 
 ### DOCKER
+- 가상 실행 환경 위에 application 배포 엔진을 더해 팀원들의 코드를 어디서든 가볍게 실행시킬 수 있기 위해 로컬 개발용과 배포용 docker-compose 파일을 만들어서 적용하였습니다.
+- 개발용 환경을 구축했을 시에 장점은 팀원들의 개발환경 셋팅시간을 줄여줘서 구현에 더 집중할 수 있습니다.
+- 배포용 환경을 구축했을 시에는 일일이 셋팅을 한다고하면, 아무래도 서버와 로컬간의 OS 같은 환경에 차이로 인해서 시간를 낭비 할 수도 있으며 특히, 배포시마다 이러한 상황이 반복될 수 있다는 것인데, docker를 통해서 이러한 시간낭비를 줄 일 수 있다는 장점이 있습니다.
 
 ## API TEST 방법
-
+1. 우측 링크를 클릭해서 postman으로 들어갑니다. ![링크]()
+2. 정의된 SERVER_URL이 올바른지 확인 합니다. (18.188.189.173:8000)
+3. 정의된 회원가입, 로그인 요청을 이용해서 access_token을 획득합니다.
+4. 각 요청에 header 부분에 Authorization 항목에 획득한 access_token을 입력하여 요청을 진행합니다. 로그인을 제외한 요청에는 access_token이 필요합니다.
+5. 만약 Send버튼이 비활성화가 될 시 fork를 이용해서 해당 postman project를 복사해서 시도하길 바랍니다.
 ## 설치 및 실행 방법
 
+### Local 개발 및 테스트용
+1. miniconda를 설치한다. (https://docs.conda.io/en/latest/miniconda.html)
+2. 해당프로젝트를 clone 하고, 프로젝트 폴더로 들어간다.
+3. 가상 환경을 만들고 프로젝트에 사용한 python package를 받는다.
+4. .dockerenv.local_dev 파일을 만들어서 안에 다음과 같은 내용을 입력한다. manage.py와 같은 폴더에 생성한다.
+5. docker-compose를 통해서 db와 서버를 실행시킨다.
+6. 만약 백그라운드에서 실행하고 싶을 시 -d 옵션을 추가한다.
+
+### 배포용
+1. 해당프로젝트를 clone 하고, 프로젝트 폴더로 들어간다.
+2. .dockerenv.deploy 파일을 만들어서 안에 다음과 같은 내용을 입력한다. manage.py와 같은 폴더에 생성한다.
+3. docker-compose를 통해서 db와 서버를 실행시킨다.
+4. 만약 백그라운드에서 실행하고 싶을 시 -d 옵션을 추가한다.
 ## 폴더 구조
 ```bash
 
