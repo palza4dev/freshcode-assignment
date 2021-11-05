@@ -1,4 +1,4 @@
-import json, bcrypt
+import json, bcrypt, jwt
 
 from django.test  import TestCase, Client
 
@@ -101,7 +101,7 @@ class SigninTest(TestCase):
             }
         )
 
-    def test_signinview_post_jsondecod_eerror(self):
+    def test_signinview_post_jsondecod_error(self):
         client = Client()
 
         response = client.post('/users/signin')
