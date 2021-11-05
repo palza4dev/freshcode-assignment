@@ -2,7 +2,6 @@ import jwt
 import json
 
 from django.http      import JsonResponse
-from django.shortcuts import redirect
 from django.conf      import settings
 from users.models     import User
 
@@ -23,11 +22,6 @@ def signin_decorator(func):
 
         except User.DoesNotExist :
             return JsonResponse({"message":"UNKNOWN_USER"}, status=401)
-
-        user = request.session.get('user')
-        
-        if user is None or not user:
-            return  redirect('/login')
 
         return func(self, request, *args, **kwargs)
 
@@ -51,14 +45,9 @@ def admin_decorator(func):
         except User.DoesNotExist :
             return JsonResponse({"message":"UNKNOWN_USER"}, status=401)
 
-        user = request.session.get('user')
-        
-        if user is None or not user:
-            return  redirect('/login')
-
         user = User.objects.get(email=user)
         if user.role != 'admin':
-            return redirect('/')
+            return JsonResponse({"message":"NOT_ADMIN"})
 
         return func(self, request, *args, **kwargs)
 
