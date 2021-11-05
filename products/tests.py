@@ -3,84 +3,168 @@ import json, jwt, bcrypt
 from django.test     import TestCase, Client, client
 from my_settings import ALGORITHM, SECRET_KEY
 
-from users.models    import User
-from products.models import Category, Option, Product, Tag
+from freshcode.settings import SECRET_KEY, ALGORITHM
+from users.models       import User
+from products.models    import Category, Option, Product, Tag
 
-# class ProductDetailTest(TestCase):
-#     def setUp(self):
-#         password = 'abc1234!'
-#         User.objects.create(
-#             id       = 1,
-#             email    = 'test@test.com',
-#             password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')          
-#         )
+class ProductDetailTest(TestCase):
+    def setUp(self):
+        global password
+        password = 'sample_password'
+        user = User.objects.create(
+            id       = 1,
+            email    = 'user@freshcode.me',
+            password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8'),
+            role     = 'user'   
+        )
+        global user_token
+        user_token = jwt.encode({'id':user.id}, SECRET_KEY, algorithm=ALGORITHM)        
         
-#         Category.objects.create(
-#             id   = 1,
-#             name = 'sample_category'
-#         )
-        
-#         Tag.objects.create(
-#             id   = 1,
-#             name = 'sample_tag'
-#         )
-        
-#         Product.objects.create(
-#             id          = 1,
-#             name        = 'sample_name',
-#             description = 'sample_description',
-#             badge       = 'sample_badge',
-#             is_sold     = False,
-#             category_id = 1,
-#             tag_id      = 1
-#         )
-        
-#         Option.objects.create(
-#             id         = 1,
-#             name       = 'sample_option',
-#             size       = 'sample_size',
-#             price      = 7700,
-#             product_id = 1,
-#             is_sold    = False
-#         )
+        admin = User.objects.create(
+            id       = 2,
+            email    = 'admin@freshcode.me',
+            password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8'),
+            role     = 'admin'  
+        )
+        global admin_token
+        admin_token = jwt.encode({'id':admin.id}, SECRET_KEY, algorithm=ALGORITHM)
 
-#     def tearDown(self):
-#         User.objects.all().delete()
-#         Category.objects.all().delete()
-#         Tag.objects.all().delete()
-#         Product.objects.all().delete()
-#         Option.objects.all().delete()
-    
-#     def test_detail_get_success(self):
-#         client = Client()
+        Category.objects.create(
+            id   = 1,
+            name = 'sample_category'
+        )
         
-#         response = client.get('/products/1', content_type='application/json')
+        Tag.objects.create(
+            id   = 1,
+            name = 'sample_tag'
+        )
         
-#         self.assertEqual(response.status_code, 200)
-#         self.assertEqual(response.json(),{
-#             'product' : {
-#                 'id'          : 1,
-#                 'category'    : 'sample_category',
-#                 'name'        : 'sample_name',
-#                 'description' : 'sample_description',
-#                 'isSold'      : False,
-#                 'badge'       : 'sample_badge',
-#                 'items'       : [
-#                     {
-#                         'id'       : 1,
-#                         'productId': 1,
-#                         'name'     : 'sample_option',
-#                         'size'     : 'sample_size',
-#                         'price'    : 7700,
-#                         'isSold'   : False
-#                     }
-#                 ]
-#             }
-#         })
+        Product.objects.create(
+            id          = 1,
+            name        = 'sample_name',
+            description = 'sample_description',
+            badge       = 'sample_badge',
+            is_sold     = False,
+            category_id = 1,
+            tag_id      = 1
+        )
+        
+        Option.objects.create(
+            id         = 1,
+            name       = 'sample_option',
+            size       = 'sample_size',
+            price      = 7700,
+            product_id = 1,
+            is_sold    = False
+        )
+
+    def tearDown(self):
+        User.objects.all().delete()
+        Category.objects.all().delete()
+        Tag.objects.all().delete()
+        Product.objects.all().delete()
+        Option.objects.all().delete()
     
-    #def test_detail_get_not_found_fail(self):
-    
-    #def test_detail_get_value_error_fail(self): 
+    def test_detail_get_success(self):
+        client = Client()
+        
+        response = client.get('/products/1', content_type='application/json')
+        
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json(),{
+            'product' : {
+                'id'          : 1,
+                'category'    : 'sample_category',
+                'name'        : 'sample_name',
+                'description' : 'sample_description',
+                'isSold'      : False,
+                'badge'       : 'sample_badge',
+                'items'       : [
+                    {
+                        'id'       : 1,
+                        'productId': 1,
+                        'name'     : 'sample_option',
+                        'size'     : 'sample_size',
+                        'price'    : 7700,
+                        'isSold'   : False
+                    }
+                ]
+            }
+        })
+
+    def test_detail_get_not_found_fail(self):
+        client = Client()
+
+        response = client.get('/products/99', content_type='application/json')
+
+        self.assertEqual(response.status_code, 404)
+        self.assertEqual(response.json(),{'message':'PRODUCT_NOT_FOUND'})
+        
+    def test_detail_patch_success(self):
+        client = Client()
+        
+        headers     = {'HTTP_Authorization': admin_token}
+        data        = {
+            'name'  : 'name_change',
+            'badge' : 'badge_change'
+        }
+        response = client.patch('/products/1', data=data, content_type='application/json', **headers)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json(), {'message':'UPDATED'})
+
+    def test_detail_patch_not_admin_fail(self):
+        client = Client()
+        
+        headers     = {'HTTP_Authorization': user_token}
+        data        = {
+            'name'  : 'name_change',
+            'badge' : 'badge_change'
+        }
+        response = client.patch('/products/1', data=data, content_type='application/json', **headers)
+
+        self.assertEqual(response.status_code, 401)
+        self.assertEqual(response.json(), {'message':'NOT_ADMIN'})
+        
+    def test_detail_patch_product_not_found_fail(self):
+        client = Client()
+        
+        headers     = {'HTTP_Authorization': admin_token}
+        data        = {
+            'name'  : 'name_change',
+            'badge' : 'badge_change'
+        }
+        response = client.patch('/products/99', data=data, content_type='application/json', **headers)
+
+        self.assertEqual(response.status_code, 404)
+        self.assertEqual(response.json(), {'message':'PRODUCT_NOT_FOUND'})
+
+    def test_detail_delete_success(self):
+        client = Client()
+        
+        headers  = {'HTTP_Authorization': admin_token}
+        response = client.delete('/products/1', content_type='application/json', **headers)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json(), {'message':'DELETED'})
+
+    def test_detail_delete_not_admin_fail(self):
+        client = Client()
+        
+        headers  = {'HTTP_Authorization': user_token}
+        response = client.patch('/products/1', content_type='application/json', **headers)
+
+        self.assertEqual(response.status_code, 401)
+        self.assertEqual(response.json(), {'message':'NOT_ADMIN'})
+
+    def test_detail_delete_product_not_found_fail(self):
+        client = Client()
+        
+        headers  = {'HTTP_Authorization': admin_token}
+        response = client.delete('/products/99', content_type='application/json', **headers)
+
+        self.assertEqual(response.status_code, 404)
+        self.assertEqual(response.json(), {'message':'PRODUCT_NOT_FOUND'})   
 
 class ProductViewTest(TestCase):
     def setUp(self):
@@ -134,7 +218,6 @@ class ProductViewTest(TestCase):
                     is_sold = 0
                 )
         
-
     def tearDown(self):
         Category.objects.all().delete()
         Product.objects.all().delete()
@@ -371,4 +454,3 @@ class ProductViewTest(TestCase):
         self.assertEqual(response.json(), {
             'message' : 'VALUE_ERROR'
         })
-    

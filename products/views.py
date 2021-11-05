@@ -7,9 +7,8 @@ from django.views                 import View
 from django.db                    import transaction
 
 from .models                      import Product
-#TODO: from users.decorator              import admin_decorator
+from .models                      import Product
 from users.decorator              import admin_decorator, signin_decorator
-from .models                      import Option, Product, Category, Tag
 
 class ProductView(View):
     @admin_decorator
@@ -103,11 +102,8 @@ class ProductDetailView(View):
 
         except Product.DoesNotExist:
             return JsonResponse({'message' : 'PRODUCT_NOT_FOUND'}, status=404)
-        
-        except ValueError:
-            return JsonResponse({'message' : 'VALUE_ERROR'}, status=400)
 
-    #TODO: @admin_decorator
+    @admin_decorator
     def patch(self, request, product_id):
         try:
             data = json.loads(request.body)
@@ -122,11 +118,11 @@ class ProductDetailView(View):
         except JSONDecodeError:
             return JsonResponse({'message':'JSON_DECODE_ERROR'}, status=400)
 
-    #TODO: @admin_decorator
+    @admin_decorator
     def delete(self, request, product_id):
 
         if not Product.objects.filter(id=product_id).exists():
-            return JsonResponse({'message':'INVALID_PRODUCT_ID'}, status=404)
+            return JsonResponse({'message':'PRODUCT_NOT_FOUND'}, status=404)
 
         product = Product.objects.get(id=product_id)
             
