@@ -45,9 +45,8 @@ def admin_decorator(func):
         except User.DoesNotExist :
             return JsonResponse({"message":"UNKNOWN_USER"}, status=401)
 
-        user = User.objects.get(email=user)
         if user.role != 'admin':
-            return JsonResponse({"message":"NOT_ADMIN"})
+            return JsonResponse({"message":"NOT_ADMIN"}, status=401)
 
         return func(self, request, *args, **kwargs)
 
