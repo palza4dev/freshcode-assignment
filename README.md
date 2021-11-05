@@ -57,7 +57,7 @@ https://documenter.getpostman.com/view/17676214/UVC2H9AU
 ### 상품관리
 - 사용자는 로그인시에(header에 token이 있는 상태) 상품조회만 가능하도록 하였습니다. 
 - 관리자는 로그인시에(header에 token이 있는 상태) 상품 추가/수정/삭제가 가능하도록 하였습니다. 
-- 상품 조회의 경우 query string을 이용한 pagination, Q객체와 __contains를 이용한 상품검색,카테고리 필터링, 정렬 등의 기능을 구현하였습니다.
+- 상품 조회의 경우 query string을 이용한 pagination, Q객체와 __contains를 이용한 상품검색, 카테고리 필터링 등의 기능을 구현하였습니다.
 
 ### DOCKER
 - 가상 실행 환경 위에 application 배포 엔진을 더해 팀원들의 코드를 어디서든 가볍게 실행시킬 수 있기 위해 로컬 개발용과 배포용 docker-compose 파일을 만들어서 적용하였습니다.
