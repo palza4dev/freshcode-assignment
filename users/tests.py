@@ -1,6 +1,7 @@
 import json, bcrypt, jwt
+from django.http import response
 
-from django.test  import TestCase, Client
+from django.test  import TestCase, Client, client
 
 from users.models import User
 
@@ -112,3 +113,10 @@ class SigninTest(TestCase):
                 'message' : 'JSON_DECODE_ERROR'
             }
         )
+
+    def test_admin_signin_post_jsondecode_error(self):
+        client = Client()
+
+        response = client.post('/user/signin', json.dumps(user), content_type='application/json')
+
+        self.assertEqual(response.status_code, 401)
