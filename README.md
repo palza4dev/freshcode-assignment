@@ -4,7 +4,7 @@
 - 과제 제출 기업정보
   - 기업명 : 프레쉬코드
   - ![프레쉬코드 사이트](https://www.freshcode.me/)
-  - ![원티드 채용공고 링크](https://docs.google.com/forms/d/e/1FAIpQLSd35J7eof4YGkPLMD_6hwj6f52JxMgOfomN_rBM6WUCeU8g-g/viewform)
+  - ![원티드 채용공고 링크](https://www.wanted.co.kr/wd/34118)
 ## Members
 
 |이름   |github                   |담당 기능|
@@ -39,6 +39,9 @@
 > - Deploy : AWS EC2, DOCKER
 > - ETC : GIT, GITHUB, POSTMAN
 
+## 모델링
+<img width="775" alt="스크린샷 2021-11-05 오후 1 53 41" src="https://user-images.githubusercontent.com/41711271/140467324-cf03a130-4175-4e4c-bf00-e3ce75f132b5.png">
+
 ## API
 https://documenter.getpostman.com/view/17676214/UVC2H9AU
 
@@ -52,13 +55,26 @@ https://documenter.getpostman.com/view/17676214/UVC2H9AU
 ### 상품관리
 - 사용자는 로그인시에(header에 token이 있는 상태) 상품조회만 가능하도록 하였습니다. 
 - 관리자는 로그인시에(header에 token이 있는 상태) 상품 추가/수정/삭제가 가능하도록 하였습니다. 
-- 상품조회의 경우 query string을 이용한 pagination, 상품검색, Q객체를 이용한 카테고리 필터링, 정렬 등의 기능을 구현하였습니다.
+- 상품조회의 경우 query string을 이용한 pagination, Q객체와 __contains를 이용한 상품검색, 카테고리 필터링, 정렬 등의 기능을 구현하였습니다.
 
 ### DOCKER
 
+- 팀원들의 빠른 개발환경 셋팅을 위해서 로컬 개발용과 배포용 docker-compose 파일을 만들어서 적용하였습니다.
+- 개발용 환경을 구축했을 시 장점은 팀원들의 개발환경 셋팅시간을 줄여줘서 구현에 더 집중 할 수 있습니다.
+- 배포용 환경을 구축했을 시에는 일일이 셋팅을 한다고하면, 아무래도 서버와 로컬간의 OS 같은 환경에 차이로 인해서 시간를 낭비 할 수도 있으며 특히, 배포시마다 이러한 상황이 반복될 수 있다는 것인데, docker를 통해서 이러한 시간낭비를 줄 일 수 있다는 장점이 있습니다.
+
 ## API TEST 방법
 
+1. 우측 링크를 클릭해서 postman으로 들어갑니다. 링크
+2. 정의된 SERVER_URL이 올바른지 확인 합니다. (18.188.189.173:8000)
+3. 정의된 회원가입, 로그인 요청을 이용해서 access_token을 획득합니다.
+4. 각 요청에 header 부분에 Authorization 항목에 획득한 access_token을 입력하여 요청을 진행합니다. 회원가입, 로그인을 제외한 요청에는 access_token이 필요합니다.
+5. 만약 Send버튼이 비활성화가 될 시 fork를 이용해서 해당 postman project를 복사해서 시도하길 바랍니다. 
+
 ## 설치 및 실행 방법
+
+### Local 개발 및 테스트용
+### 배포용
 
 ## 폴더 구조
 ```bash
