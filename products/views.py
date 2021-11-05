@@ -62,7 +62,7 @@ class ProductView(View):
                 'category'    : product.category.name,
                 'name'        : product.name,
                 'description' : product.description,
-                'isSold'      : product.is_sold,
+                'is_sold'      : product.is_sold,
                 'badge'       : product.badge,
                 'items'       : list(product.option_set.values('id', 'product_id', 'name', 'size', 'price', 'is_sold')),
                 'tags'        : {'name' : product.tag.name, 'type' : product.tag.type},
@@ -85,7 +85,7 @@ class ProductDetailView(View):
                 'name'      : option.name,
                 'size'      : option.size,
                 'price'     : option.price,
-                'isSold'    : option.is_sold
+                'is_sold'    : option.is_sold
             } for option in product.option_set.all()]
             
             data = {
@@ -93,7 +93,7 @@ class ProductDetailView(View):
                 'category'    : product.category.name,
                 'name'        : product.name,
                 'description' : product.description,
-                'isSold'      : product.is_sold,
+                'is_sold'      : product.is_sold,
                 'badge'       : product.badge,
                 'items'       : items
             }

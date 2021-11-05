@@ -445,6 +445,80 @@ class ProductViewTest(TestCase):
             }
         )
 
+    def test_products_get_category_success(self):
+        client = Client()
+        
+        response = client.get('/products?category=1')
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json(), {
+                
+            "message": "SUCCESS",
+            "products": [
+                {
+                    "id": 1,
+                    "category": "메뉴1",
+                    "name": "상품1",
+                    "description": "설명1",
+                    "isSold": False,
+                    "badge": "NEW",
+                    "items": [
+                        {
+                        "id": 1,
+                        "product_id": 1,
+                        "name": "미디움",
+                        "size": "M",
+                        "price": 10001,
+                        "is_sold": False
+                        },
+                        {
+                        "id": 2,
+                        "product_id": 1,
+                        "name": "라지",
+                        "size": "L",
+                        "price": 10001,
+                        "is_sold": False
+                        }
+                    ],
+                    "tags": {
+                        "name": "태그1",
+                        "type": "tag1"
+                    }
+                    },
+                    {
+                    "id": 6,
+                    "category": "메뉴1",
+                    "name": "상품6",
+                    "description": "설명6",
+                    "isSold": False,
+                    "badge": "NEW",
+                    "items": [
+                        {
+                        "id": 11,
+                        "product_id": 6,
+                        "name": "미디움",
+                        "size": "M",
+                        "price": 10006,
+                        "is_sold": False
+                        },
+                        {
+                        "id": 12,
+                        "product_id": 6,
+                        "name": "라지",
+                        "size": "L",
+                        "price": 10006,
+                        "is_sold": False
+                        }
+                    ],
+                    "tags": {
+                        "name": "태그1",
+                        "type": "tag1"
+                    }
+                    }],
+            
+                }
+            
+            )
+
     def test_products_get_value_error(self):
         client = Client()
 
