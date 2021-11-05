@@ -1,7 +1,6 @@
 import json, jwt, bcrypt
 
-from django.test     import TestCase, Client, client
-from my_settings import ALGORITHM, SECRET_KEY
+from django.test        import TestCase, Client
 
 from freshcode.settings import SECRET_KEY, ALGORITHM
 from users.models       import User
