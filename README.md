@@ -39,6 +39,10 @@
 > - Deploy : AWS EC2, DOCKER
 > - ETC : GIT, GITHUB, POSTMAN
 
+## 모델링
+<img width="775" alt="스크린샷 2021-11-05 오후 1 53 41" src="https://user-images.githubusercontent.com/41711271/140463861-ecbcffd4-d8d5-48a9-81f5-0c622c1798a9.png">
+
+
 ## API
 https://documenter.getpostman.com/view/17676214/UVC2H9AU
 
