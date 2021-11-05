@@ -40,12 +40,19 @@
 > - ETC : GIT, GITHUB, POSTMAN
 
 ## API
-링크
+https://documenter.getpostman.com/view/17676214/UVC2H9AU
+
 ## 구현 기능
 
 ### 로그인
+- 데이터베이스에 등록된 유저는 총 2명으로 사용자 1번은 user, 사용자 2번은 admin입니다.
+- Request시 Header에 Authorization 키를 체크 한 후에 Authorization 키의 값이 없거나 인증 실패시 Error Handling하였습니다.
+- 로그인이 성공적으로 완료되면, user정보와 admin정보를 토큰으로 반환할 때 양방향 해쉬 알고리즘인 'JWT'를 사용해서 응답을 하였습니다.
 
 ### 상품관리
+- 사용자는 로그인시에(header에 token이 있는 상태) 상품조회만 가능하도록 하였습니다. 
+- 관리자는 로그인시에(header에 token이 있는 상태) 상품 추가/수정/삭제가 가능하도록 하였습니다. 
+- 상품조회의 경우 query string을 이용한 pagination, 상품검색, Q객체를 이용한 카테고리 필터링, 정렬 등의 기능을 구현하였습니다.
 
 ### DOCKER
 
@@ -53,6 +60,10 @@
 
 ## 설치 및 실행 방법
 
+## 폴더 구조
+```bash
+
+```
 ## TIL Blog
  - 문승준 : 
  - 구본욱 : 
