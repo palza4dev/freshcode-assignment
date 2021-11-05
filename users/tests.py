@@ -102,7 +102,7 @@ class SigninTest(TestCase):
             }
         )
 
-    def test_signinview_post_jsondecod_error(self):
+    def test_signinview_post_jsondecode_error(self):
         client = Client()
 
         response = client.post('/users/signin')
