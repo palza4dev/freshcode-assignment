@@ -3,8 +3,8 @@
 
 - 과제 제출 기업정보
   - 기업명 : 프레쉬코드
-  - ![프레쉬코드 사이트](https://www.freshcode.me/)
-  - ![원티드 채용공고 링크](https://www.wanted.co.kr/wd/34118)
+  - [프레쉬코드 사이트](https://www.freshcode.me/)
+  - [원티드 채용공고 링크](https://www.wanted.co.kr/wd/34118)
 ## Members
 
 |이름   |github                   |담당 기능|
