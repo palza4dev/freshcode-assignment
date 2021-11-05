@@ -1,4 +1,4 @@
-# wanted-freshcode-assignment
+# [Assignment2]Wanted-Freshcode-Preonboarding
 원티드x위코드 백엔드 프리온보딩 과제2
 
 - 과제 제출 기업정보
