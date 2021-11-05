@@ -137,7 +137,7 @@ docker-compose -f docker-compose-deploy.yml up -d
 ## TIL Blog
  - 문승준 : 
  - 구본욱 : 
- - 김지훈 :https://developer-travel.tistory.com/ 
+ - 김지훈 : https://developer-travel.tistory.com/ 
  - 이다빈 : 
  - 양가현 : 
  - 김주현 : 
