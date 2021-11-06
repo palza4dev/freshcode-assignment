@@ -45,7 +45,7 @@
 
 
 ## API 명세
-https://documenter.getpostman.com/view/17676214/UVC3j7dg
+https://documenter.getpostman.com/view/17676214/UVC3j7i1
 
 ## 구현 기능
 
