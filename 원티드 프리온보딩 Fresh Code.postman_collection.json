@@ -1,0 +1,1049 @@
+{
+	"info": {
+		"_postman_id": "1fa994d4-29c8-432c-96d8-b1998f330f98",
+		"name": "원티드 프리온보딩 Fresh Code",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "유저 로그인",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\" : \"user@freshcode.me\",\n    \"password\" : \"user\"\n}"
+				},
+				"url": {
+					"raw": "http://{{hostname}}:8000/users/signin",
+					"protocol": "http",
+					"host": [
+						"{{hostname}}"
+					],
+					"port": "8000",
+					"path": [
+						"users",
+						"signin"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "유저 로그인",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\" : \"user@freshcode.me\",\n    \"password\" : \"user\"\n}"
+						},
+						"url": {
+							"raw": "http://{{hostname}}:8000/users/signin",
+							"protocol": "http",
+							"host": [
+								"{{hostname}}"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"signin"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Fri, 05 Nov 2021 02:34:37 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.8.12"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "112"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"access_token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Nn0.cXSghaV02_FNlNbS4qAerzppUi-pR22Eqwe7wIKnYjg\"\n}"
+				}
+			]
+		},
+		{
+			"name": "어드민 로그인",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\" : \"admin@freshcode.me\",\n    \"password\" : \"admin\"\n}"
+				},
+				"url": {
+					"raw": "http://{{hostname}}:8000/users/signin",
+					"protocol": "http",
+					"host": [
+						"{{hostname}}"
+					],
+					"port": "8000",
+					"path": [
+						"users",
+						"signin"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "어드민 로그인",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\" : \"admin@freshcode.me\",\n    \"password\" : \"admin\"\n}"
+						},
+						"url": {
+							"raw": "http://{{hostname}}:8000/users/signin",
+							"protocol": "http",
+							"host": [
+								"{{hostname}}"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"signin"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Fri, 05 Nov 2021 02:22:03 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.8.12"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "112"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"access_token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6NX0.Kfgp94aHXiTpRaX6UO5lWKgtKvw5hLkqNso38ymeNqw\"\n}"
+				}
+			]
+		},
+		{
+			"name": "상품 상세 조회",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{hostname}}:8000/products/3",
+					"protocol": "http",
+					"host": [
+						"{{hostname}}"
+					],
+					"port": "8000",
+					"path": [
+						"products",
+						"3"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "상품 상세 조회",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{hostname}}:8000/products/3",
+							"protocol": "http",
+							"host": [
+								"{{hostname}}"
+							],
+							"port": "8000",
+							"path": [
+								"products",
+								"3"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Fri, 05 Nov 2021 01:22:43 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.8.12"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "687"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"product\": {\n        \"id\": 3,\n        \"category\": \"SALAD-WRAP\",\n        \"name\": \"[요즘요거트] 프리미엄 그릭요거트 2종\",\n        \"description\": \"잠봉, 레몬커드, 캔디드 피칸의 상큼한 조합을 자랑하는 샐러드랩\",\n        \"isSold\": false,\n        \"badge\": \"NEW\",\n        \"items\": [\n            {\n                \"id\": 3,\n                \"productId\": 3,\n                \"name\": \"1개\",\n                \"size\": \"330g\",\n                \"price\": 7500,\n                \"isSold\": false\n            },\n            {\n                \"id\": 4,\n                \"productId\": 3,\n                \"name\": \"샐랩 쿠키세트\",\n                \"size\": \"샐랩+오렌지 블랙티 쿠키+슈가로로\",\n                \"price\": 10500,\n                \"isSold\": false\n            }\n        ]\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "상품 전체 조회",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{hostname}}:8000/products?offset=0&limit=3",
+					"protocol": "http",
+					"host": [
+						"{{hostname}}"
+					],
+					"port": "8000",
+					"path": [
+						"products"
+					],
+					"query": [
+						{
+							"key": "offset",
+							"value": "0"
+						},
+						{
+							"key": "limit",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "상품 전체 조회",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{hostname}}:8000/products?offset=0&limit=3",
+							"protocol": "http",
+							"host": [
+								"{{hostname}}"
+							],
+							"port": "8000",
+							"path": [
+								"products"
+							],
+							"query": [
+								{
+									"key": "offset",
+									"value": "0"
+								},
+								{
+									"key": "limit",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Fri, 05 Nov 2021 04:05:25 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.8.12"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1756"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"SUCCESS\",\n    \"products\": [\n        {\n            \"id\": 1,\n            \"category\": \"SALAD\",\n            \"name\": \"두부 크럼블 낫또 샐러드\",\n            \"description\": \"고소한 두부크럼블과 담백한 낫또에 더해진 참기름 간장 드레싱의 감칠맛\",\n            \"isSold\": false,\n            \"badge\": \"NEW\",\n            \"items\": [\n                {\n                    \"id\": 1,\n                    \"product_id\": 1,\n                    \"name\": \"라지\",\n                    \"size\": \"L\",\n                    \"price\": 8010,\n                    \"is_sold\": false\n                }\n            ],\n            \"tags\": {\n                \"name\": \"비건\",\n                \"type\": \"vegen\"\n            }\n        },\n        {\n            \"id\": 2,\n            \"category\": \"SOUP\",\n            \"name\": \"[그리팅] 낙지김치죽\",\n            \"description\": \"한국 보양식의 정석! 싱싱한 낙지와 김치를 아낌없이 듬뿍\",\n            \"isSold\": false,\n            \"badge\": \"NEW\",\n            \"items\": [\n                {\n                    \"id\": 2,\n                    \"product_id\": 2,\n                    \"name\": \"1ea\",\n                    \"size\": \"\",\n                    \"price\": 6500,\n                    \"is_sold\": false\n                }\n            ],\n            \"tags\": {\n                \"name\": \"페스코베지테리언\",\n                \"type\": \"vegetarianism\"\n            }\n        },\n        {\n            \"id\": 3,\n            \"category\": \"SALAD-WRAP\",\n            \"name\": \"잠봉 레몬커드 샐러드랩\",\n            \"description\": \"잠봉, 레몬커드, 캔디드 피칸의 상큼한 조합을 자랑하는 샐러드랩\",\n            \"isSold\": false,\n            \"badge\": \"NEW\",\n            \"items\": [\n                {\n                    \"id\": 3,\n                    \"product_id\": 3,\n                    \"name\": \"1개\",\n                    \"size\": \"330g\",\n                    \"price\": 7500,\n                    \"is_sold\": false\n                },\n                {\n                    \"id\": 4,\n                    \"product_id\": 3,\n                    \"name\": \"샐랩 쿠키세트\",\n                    \"size\": \"샐랩+오렌지 블랙티 쿠키+슈가로로\",\n                    \"price\": 10500,\n                    \"is_sold\": false\n                }\n            ],\n            \"tags\": {\n                \"name\": \"플렉시테리언\",\n                \"type\": \"flexitarian\"\n            }\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "상품 검색",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{hostname}}:8000/products?search-word=김치",
+					"protocol": "http",
+					"host": [
+						"{{hostname}}"
+					],
+					"port": "8000",
+					"path": [
+						"products"
+					],
+					"query": [
+						{
+							"key": "search-word",
+							"value": "김치"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "상품 검색",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{hostname}}:8000/products?search-word=김치",
+							"protocol": "http",
+							"host": [
+								"{{hostname}}"
+							],
+							"port": "8000",
+							"path": [
+								"products"
+							],
+							"query": [
+								{
+									"key": "search-word",
+									"value": "김치"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Fri, 05 Nov 2021 04:11:29 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.8.12"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "522"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"SUCCESS\",\n    \"products\": [\n        {\n            \"id\": 2,\n            \"category\": \"SOUP\",\n            \"name\": \"[그리팅] 낙지김치죽\",\n            \"description\": \"한국 보양식의 정석! 싱싱한 낙지와 김치를 아낌없이 듬뿍\",\n            \"isSold\": false,\n            \"badge\": \"NEW\",\n            \"items\": [\n                {\n                    \"id\": 2,\n                    \"product_id\": 2,\n                    \"name\": \"1ea\",\n                    \"size\": \"\",\n                    \"price\": 6500,\n                    \"is_sold\": false\n                }\n            ],\n            \"tags\": {\n                \"name\": \"페스코베지테리언\",\n                \"type\": \"vegetarianism\"\n            }\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "상품 카테고리",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{hostname}}:8000/products?category=4",
+					"protocol": "http",
+					"host": [
+						"{{hostname}}"
+					],
+					"port": "8000",
+					"path": [
+						"products"
+					],
+					"query": [
+						{
+							"key": "category",
+							"value": "4"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "상품 카테고리",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{hostname}}:8000/products?category=4",
+							"protocol": "http",
+							"host": [
+								"{{hostname}}"
+							],
+							"port": "8000",
+							"path": [
+								"products"
+							],
+							"query": [
+								{
+									"key": "category",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Fri, 05 Nov 2021 04:17:21 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.8.12"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1299"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"SUCCESS\",\n    \"products\": [\n        {\n            \"id\": 4,\n            \"category\": \"MEAL\",\n            \"name\": \"[요즘요거트] 프리미엄 그릭요거트 2종\",\n            \"description\": \"크림치즈처럼 꾸덕한 질감을 자랑하는 프리미엄 그릭요거트\",\n            \"is_sold\": false,\n            \"badge\": \"HOT\",\n            \"items\": [\n                {\n                    \"id\": 5,\n                    \"product_id\": 4,\n                    \"name\": \"플레인 1개\",\n                    \"size\": \"100g\",\n                    \"price\": 3510,\n                    \"is_sold\": false\n                },\n                {\n                    \"id\": 6,\n                    \"product_id\": 4,\n                    \"name\": \"플레인 3개\",\n                    \"size\": \"100g x 3\",\n                    \"price\": 9945,\n                    \"is_sold\": false\n                },\n                {\n                    \"id\": 7,\n                    \"product_id\": 4,\n                    \"name\": \"블루베리 1개\",\n                    \"size\": \"100g\",\n                    \"price\": 4410,\n                    \"is_sold\": false\n                },\n                {\n                    \"id\": 8,\n                    \"product_id\": 4,\n                    \"name\": \"블루베리 3개\",\n                    \"size\": \"100g x 3\",\n                    \"price\": 12495,\n                    \"is_sold\": false\n                }\n            ],\n            \"tags\": {\n                \"name\": \"락토베지테리언\",\n                \"type\": \"lactovegetarian\"\n            }\n        },\n        {\n            \"id\": 7,\n            \"category\": \"MEAL\",\n            \"name\": \"상품7\",\n            \"description\": \"설명7\",\n            \"is_sold\": false,\n            \"badge\": null,\n            \"items\": [\n                {\n                    \"id\": 10,\n                    \"product_id\": 7,\n                    \"name\": \"미디움\",\n                    \"size\": \"M\",\n                    \"price\": 10000,\n                    \"is_sold\": false\n                }\n            ],\n            \"tags\": {\n                \"name\": \"페스코베지테리언\",\n                \"type\": \"vegetarianism\"\n            }\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "상품 생성",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6NX0.Kfgp94aHXiTpRaX6UO5lWKgtKvw5hLkqNso38ymeNqw",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\" : \"상품7\",\n\t\"description\" : \"설명7\",\n\t\"is_sold\" : 0,\n\t\"badge\" : \"NEW\",\n\t\"category\" : 4,\n\t\"tag\" : 1,\n\t\"option_name\" : \"미디움\",\n\t\"size\" : \"M\",\n\t\"price\" : 10000,\n\t\"option_is_sold\" : 0\n}"
+				},
+				"url": {
+					"raw": "http://{{hostname}}:8000/products",
+					"protocol": "http",
+					"host": [
+						"{{hostname}}"
+					],
+					"port": "8000",
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "상품 생성 - user",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Nn0.cXSghaV02_FNlNbS4qAerzppUi-pR22Eqwe7wIKnYjg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\" : \"상품7\",\n\t\"description\" : \"설명7\",\n\t\"is_sold\" : 0,\n\t\"badge\" : \"NEW\",\n\t\"category\" : 4,\n\t\"tag\" : 1,\n\t\"option_name\" : \"미디움\",\n\t\"size\" : \"M\",\n\t\"price\" : 10000,\n\t\"option_is_sold\" : 0\n}"
+						},
+						"url": {
+							"raw": "http://{{hostname}}:8000/products",
+							"protocol": "http",
+							"host": [
+								"{{hostname}}"
+							],
+							"port": "8000",
+							"path": [
+								"products"
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Fri, 05 Nov 2021 04:15:46 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.8.12"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "24"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"NOT_ADMIN\"\n}"
+				},
+				{
+					"name": "상품 생성 - admin",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6NX0.Kfgp94aHXiTpRaX6UO5lWKgtKvw5hLkqNso38ymeNqw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\" : \"상품7\",\n\t\"description\" : \"설명7\",\n\t\"is_sold\" : 0,\n\t\"badge\" : \"NEW\",\n\t\"category\" : 4,\n\t\"tag\" : 1,\n\t\"option_name\" : \"미디움\",\n\t\"size\" : \"M\",\n\t\"price\" : 10000,\n\t\"option_is_sold\" : 0\n}"
+						},
+						"url": {
+							"raw": "http://{{hostname}}:8000/products",
+							"protocol": "http",
+							"host": [
+								"{{hostname}}"
+							],
+							"port": "8000",
+							"path": [
+								"products"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Fri, 05 Nov 2021 04:16:03 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.8.12"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "22"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"CREATED\"\n}"
+				}
+			]
+		},
+		{
+			"name": "상품 수정",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6NX0.Kfgp94aHXiTpRaX6UO5lWKgtKvw5hLkqNso38ymeNqw",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\" : \"[요즘요거트] 프리미엄 그릭요거트 2종\"\n}"
+				},
+				"url": {
+					"raw": "http://{{hostname}}:8000/products/3",
+					"protocol": "http",
+					"host": [
+						"{{hostname}}"
+					],
+					"port": "8000",
+					"path": [
+						"products",
+						"3"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "상품 수정 - admin",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6NX0.Kfgp94aHXiTpRaX6UO5lWKgtKvw5hLkqNso38ymeNqw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\" : \"[요즘요거트] 프리미엄 그릭요거트 2종\"\n}"
+						},
+						"url": {
+							"raw": "http://{{hostname}}:8000/products/3",
+							"protocol": "http",
+							"host": [
+								"{{hostname}}"
+							],
+							"port": "8000",
+							"path": [
+								"products",
+								"3"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Fri, 05 Nov 2021 02:35:01 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.8.12"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "22"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"UPDATED\"\n}"
+				},
+				{
+					"name": "상품 수정 - user",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Nn0.cXSghaV02_FNlNbS4qAerzppUi-pR22Eqwe7wIKnYjg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\" : \"[요즘요거트] 프리미엄 그릭요거트 2종\"\n}"
+						},
+						"url": {
+							"raw": "http://{{hostname}}:8000/products/3",
+							"protocol": "http",
+							"host": [
+								"{{hostname}}"
+							],
+							"port": "8000",
+							"path": [
+								"products",
+								"3"
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Fri, 05 Nov 2021 02:35:22 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.8.12"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "24"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"NOT_ADMIN\"\n}"
+				}
+			]
+		},
+		{
+			"name": "상품 삭제",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6NX0.Kfgp94aHXiTpRaX6UO5lWKgtKvw5hLkqNso38ymeNqw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://{{hostname}}:8000/products/6",
+					"protocol": "http",
+					"host": [
+						"{{hostname}}"
+					],
+					"port": "8000",
+					"path": [
+						"products",
+						"6"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "상품 삭제 - user",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Nn0.cXSghaV02_FNlNbS4qAerzppUi-pR22Eqwe7wIKnYjg",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://{{hostname}}:8000/products/6",
+							"protocol": "http",
+							"host": [
+								"{{hostname}}"
+							],
+							"port": "8000",
+							"path": [
+								"products",
+								"6"
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Fri, 05 Nov 2021 02:36:57 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.8.12"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "24"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"NOT_ADMIN\"\n}"
+				},
+				{
+					"name": "상품 삭제 - admin",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6NX0.Kfgp94aHXiTpRaX6UO5lWKgtKvw5hLkqNso38ymeNqw",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://{{hostname}}:8000/products/6",
+							"protocol": "http",
+							"host": [
+								"{{hostname}}"
+							],
+							"port": "8000",
+							"path": [
+								"products",
+								"6"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Fri, 05 Nov 2021 02:37:22 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.8.12"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "22"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"DELETED\"\n}"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "hostname",
+			"value": "13.125.45.93"
+		}
+	]
+}
