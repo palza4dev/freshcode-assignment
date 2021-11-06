@@ -70,9 +70,9 @@ https://documenter.getpostman.com/view/17676214/UVC2H9AU
 ## API TEST 방법
 1. 우측 링크를 클릭해서 postman으로 들어갑니다. [링크](https://www.postman.com/science-engineer-82080582/workspace/assignment2-freshcode-preonboarding-with/collection/17922648-8c7da93c-dbc2-47cc-b173-6c7a87fa5425?ctx=documentation)
 2. 정의된 hostname이 올바른지 확인 합니다. (13.125.45.93:8000)
-![스크린샷, 2021-11-06 09-30-34](https://user-images.githubusercontent.com/41711271/140591600-7ace58fc-0257-4de1-8d24-22a4e652e312.png)
-4. 정의된 로그인 요청을 이용해서 access_token을 획득합니다.
-5. 각 요청에 header 부분에 Authorization 항목에 획득한 access_token을 입력하여 요청을 진행합니다. 로그인을 제외한 요청에는 access_token이 필요합니다.
+![스크린샷, 2021-11-06 09-33-06](https://user-images.githubusercontent.com/41711271/140591701-8c67027f-ee5b-4b11-a239-6f7a7d6a725d.png)
+3. 정의된 로그인 요청을 이용해서 access_token을 획득합니다.
+4. 각 요청에 header 부분에 Authorization 항목에 획득한 access_token을 입력하여 요청을 진행합니다. 로그인을 제외한 요청에는 access_token이 필요합니다.
 ![스크린샷, 2021-11-06 09-22-48](https://user-images.githubusercontent.com/41711271/140591363-2693c1d2-d482-4fb2-853e-92485b7fe07f.png)
 
 
