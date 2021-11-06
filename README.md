@@ -44,8 +44,8 @@
 <img width="775" alt="스크린샷 2021-11-05 오후 1 53 41" src="https://user-images.githubusercontent.com/41711271/140463861-ecbcffd4-d8d5-48a9-81f5-0c622c1798a9.png">
 
 
-## API
-https://documenter.getpostman.com/view/17676214/UVC2H9AU
+## API 명세
+https://documenter.getpostman.com/view/17676214/UVC3j7dg
 
 ## 구현 기능
 
@@ -68,11 +68,11 @@ https://documenter.getpostman.com/view/17676214/UVC2H9AU
  - 이번 기회에 팀원들과 다시 도커에 대해 공부해보고 다음 프로젝트에서는 도커를 통해 배포하도록 하겠습니다.
 
 ## API TEST 방법
-1. 우측 링크를 클릭해서 postman으로 들어갑니다. [링크](https://www.postman.com/science-engineer-82080582/workspace/assignment2-freshcode-preonboarding-with/collection/17922648-8c7da93c-dbc2-47cc-b173-6c7a87fa5425?ctx=documentation)
-2. 정의된 hostname이 올바른지 확인 합니다. (13.125.45.93:8000)
-![스크린샷, 2021-11-06 09-33-06](https://user-images.githubusercontent.com/41711271/140591701-8c67027f-ee5b-4b11-a239-6f7a7d6a725d.png)
-3. 정의된 로그인 요청을 이용해서 access_token을 획득합니다.
-4. 각 요청에 header 부분에 Authorization 항목에 획득한 access_token을 입력하여 요청을 진행합니다. 로그인을 제외한 요청에는 access_token이 필요합니다.
+1. `원티드 프리온보딩 Fresh Code.postman_collection.json` 파일을 Postman으로 import 합니다.
+2. 정의된 hostname이 올바른지 확인 합니다. (13.125.45.93)
+![스크린샷 2021-11-06 오전 10 33 11](https://user-images.githubusercontent.com/72376931/140593488-85c5d361-d0ef-4f7a-b3c6-d3ac6f928e0f.png)
+4. 정의된 로그인 요청을 이용해서 유저와 어드민의 access_token을 획득합니다.
+5. 각 요청에 header 부분에 Authorization 항목에 획득한 access_token을 입력하여 요청을 진행합니다.
 ![스크린샷, 2021-11-06 09-22-48](https://user-images.githubusercontent.com/41711271/140591363-2693c1d2-d482-4fb2-853e-92485b7fe07f.png)
 
 
