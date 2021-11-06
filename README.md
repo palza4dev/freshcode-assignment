@@ -9,9 +9,9 @@
 
 |이름   |github                   |담당 기능|
 |-------|-------------------------|--------------------|
-|문승준 |[palza4dev](https://github.com/palza4dev)     | DB Modeling, postman api 작성, 로그인, 상품관리 기능 |
-|구본욱 |[qhsdnr0](https://github.com/qhsdnr0)   | DB Modeling, 로그인, 상품관리 기능  |
-|김지훈 |[kimfa123](https://github.com/kimfa123) | DB Modeling, 로그인, 상품관리 기능 |
+|문승준 |[palza4dev](https://github.com/palza4dev)     | DB Modeling, postman api 작성, 로그인, 상품관리 기능, unit test |
+|구본욱 |[qhsdnr0](https://github.com/qhsdnr0)   | DB Modeling, 로그인, 상품관리 기능, unit test |
+|김지훈 |[kimfa123](https://github.com/kimfa123) | DB Modeling, 로그인, 상품관리 기능, unit test |
 |이다빈 |[thisisempty](https://github.com/thisisempty)     | 개발 및 배포 환경 설정, README 작성 |
 |양가현 |[chrisyang256](https://github.com/chrisyang256)   | 개발 및 배포 환경 설정, README 작성 |
 |김주현 |[kjhabc2002](https://github.com/kjhabc2002) | 개발 및 배포 환경 설정, README 작성 |
@@ -36,7 +36,7 @@
     
 ## 사용 기술 및 tools
 > - Back-End : PYTHON, Django Framework, My SQL
-> - Deploy : AWS EC2, DOCKER
+> - Deploy : AWS EC2
 > - ETC : GIT, GITHUB, POSTMAN
 
 ## 모델링
@@ -59,85 +59,74 @@ https://documenter.getpostman.com/view/17676214/UVC2H9AU
 - 관리자는 로그인시에(header에 token이 있는 상태) 상품 추가/수정/삭제가 가능하도록 하였습니다. 
 - 상품 조회의 경우 query string을 이용한 pagination, Q객체와 __contains를 이용한 상품검색, 카테고리 필터링 등의 기능을 구현하였습니다.
 
-### DOCKER
-- 가상 실행 환경 위에 application 배포 엔진을 더해 팀원들의 코드를 어디서든 가볍게 실행시킬 수 있기 위해 로컬 개발용과 배포용 docker-compose 파일을 만들어서 적용하였습니다.
-- 개발용 환경을 구축했을 시에 장점은 팀원들의 개발환경 셋팅시간을 줄여줘서 구현에 더 집중할 수 있습니다.
-- 배포용 환경을 구축했을 시에는 일일이 셋팅을 한다고하면, 아무래도 서버와 로컬간의 OS 같은 환경에 차이로 인해서 시간를 낭비 할 수도 있으며 특히, 배포시마다 이러한 상황이 반복될 수 있다는 것인데, docker를 통해서 이러한 시간낭비를 줄 일 수 있다는 장점이 있습니다.
+### AWS 배포 (DOCKER 구현시도)
 
-- 팀원들의 빠른 개발환경 셋팅을 위해서 로컬 개발용과 배포용 docker-compose 파일을 만들어서 적용하였습니다.
-- 개발용 환경을 구축했을 시 장점은 팀원들의 개발환경 셋팅시간을 줄여줘서 구현에 더 집중 할 수 있습니다.
-- 배포용 환경을 구축했을 시에는 일일이 셋팅을 한다고하면, 아무래도 서버와 로컬간의 OS 같은 환경에 차이로 인해서 시간를 낭비 할 수도 있으며 특히, 배포시마다 이러한 상황이 반복될 수 있다는 것인데, docker를 통해서 이러한 시간낭비를 줄 일 수 있다는 장점이 있습니다.
+ - 도커를 통해 개발용 환경과 배포용 환경을 구축하여 팀원들의 개발환경 셋팅시간을 줄여줘서 구현에 더 집중할 수 있게 적용하려고 하였습니다. 
+ - 그러나 도커 내부에 환경변수를 세팅하는 과정에서 docker run 수행시 SECRET KEY ERROR를 포함한 알수없는 에러가 발생하였습니다.
+ - 팀원들과 다시 도커 컨테이너 생성부터 시작해서 환경변수를 넘겨주는 과정까지 시도해보았으나 같은 현상이 계속 발생하여 결국에는 AWS EC2로 배포하였습니다.
+ - 아무래도 도커를 처음 접하다보니 단지 명령만 실행하고 결과만 보여주면 된다는 생각만 했던 것 같습니다. 
+ - 이번 기회에 팀원들과 다시 도커에 대해 공부해보고 다음 프로젝트에서는 도커를 통해 배포하도록 하겠습니다.
 
 ## API TEST 방법
-1. 우측 링크를 클릭해서 postman으로 들어갑니다. ![링크]()
-2. 정의된 SERVER_URL이 올바른지 확인 합니다. (18.188.189.173:8000)
-3. 정의된 회원가입, 로그인 요청을 이용해서 access_token을 획득합니다.
-4. 각 요청에 header 부분에 Authorization 항목에 획득한 access_token을 입력하여 요청을 진행합니다. 로그인을 제외한 요청에는 access_token이 필요합니다.
-5. 만약 Send버튼이 비활성화가 될 시 fork를 이용해서 해당 postman project를 복사해서 시도하길 바랍니다.
+1. 우측 링크를 클릭해서 postman으로 들어갑니다. [링크](https://www.postman.com/science-engineer-82080582/workspace/assignment2-freshcode-preonboarding-with/collection/17922648-8c7da93c-dbc2-47cc-b173-6c7a87fa5425?ctx=documentation)
+2. 정의된 hostname이 올바른지 확인 합니다. (13.125.45.93:8000)
+![스크린샷, 2021-11-06 09-30-34](https://user-images.githubusercontent.com/41711271/140591600-7ace58fc-0257-4de1-8d24-22a4e652e312.png)
+4. 정의된 로그인 요청을 이용해서 access_token을 획득합니다.
+5. 각 요청에 header 부분에 Authorization 항목에 획득한 access_token을 입력하여 요청을 진행합니다. 로그인을 제외한 요청에는 access_token이 필요합니다.
+![스크린샷, 2021-11-06 09-22-48](https://user-images.githubusercontent.com/41711271/140591363-2693c1d2-d482-4fb2-853e-92485b7fe07f.png)
 
-## 설치 및 실행 방법
-
-### Local 개발 및 테스트용
-
-1. miniconda를 설치한다. (https://docs.conda.io/en/latest/miniconda.html)
-2. 해당프로젝트를 clone 하고, 프로젝트 폴더로 들어간다.
-```
-git clone https://github.com/palza4dev/wanted-freshcode-assignment.git
-cd wanted-freshcode-assignment
-```
-3. 가상 환경 생성 후 프로젝트에 사용한 python package를 받는다.
-```
-conda create -n freshcode python=3.8
-conda activate freshcode
-pip install -r requirements.txt
-```
-4. .dockerenv.local_dev 파일을 만들어서 안에 다음과 같은 내용을 입력한다. manage.py와 같은 폴더에 생성한다.
-```
-# .dockerenv.local_dev
-
-DJANGO_SECRECT_KEY='django프로젝트 SECRECT_KEY'
-```
-5. docker-compose를 통해서 db와 서버를 실행시킨다.
-```
-docker-compose -f docker-compose-local-dev.yml up
-```
-6. 만약 백그라운드에서 실행하고 싶을 시 -d 옵션을 추가한다.
-```
-docker-compose -f docker-compose-local-dev.yml up -d
-```
-
-### 배포용
-
-1. 해당프로젝트를 clone 하고, 프로젝트 폴더로 들어간다.
-```
-git clone https://github.com/palza4dev/wanted-freshcode-assignment.git
-cd wanted-freshcode-assignment
-```
-2. .dockerenv.deploy 파일을 만들어서 안에 다음과 같은 내용을 입력한다. manage.py와 같은 폴더에 생성한다.
-```
-# .dockerenv.deploy
-
-DJANGO_SECRECT_KEY='django프로젝트 SECRECT_KEY'
-DB_PORT=DB포트번호
-DB_NAME='DB이름'
-```
-3. docker-compose를 통해서 db와 서버를 실행시킨다.
-```
-docker-compose -f docker-compose-deploy.yml up
-```
-4. 만약 백그라운드에서 실행하고 싶을 시 ```-d``` 옵션을 추가한다.
-```
-docker-compose -f docker-compose-deploy.yml up -d
-```
 
 ## 폴더 구조
 ```bash
-
+.
+├── README.md
+├── core
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── migrations
+│   │   └── __init__.py
+│   ├── models.py
+│   ├── tests.py
+│   └── views.py
+├── docker-compose.yml
+├── dockerfile
+├── freshcode
+│   ├── __init__.py
+│   ├── asgi.py
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+├── manage.py
+├── products
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── migrations
+│   │   ├── 0001_initial.py
+│   │   └── __init__.py
+│   ├── models.py
+│   ├── tests.py
+│   ├── urls.py
+│   └── views.py
+├── requirements.txt
+└── users
+    ├── __init__.py
+    ├── admin.py
+    ├── apps.py
+    ├── decorator.py
+    ├── migrations
+    │   ├── 0001_initial.py
+    │   └── __init__.py
+    ├── models.py
+    ├── tests.py
+    ├── urls.py
+    └── views.py
 ```
 ## TIL Blog
  - 문승준 : 
  - 구본욱 : 
- - 김지훈 : https://developer-travel.tistory.com/ 
+ - 김지훈 : 
  - 이다빈 : 
  - 양가현 : 
  - 김주현 : 
