@@ -123,14 +123,7 @@ https://documenter.getpostman.com/view/17676214/UVC3j7i1
     ├── urls.py
     └── views.py
 ```
-## TIL Blog
- - 문승준 : 
- - 구본욱 : 
- - 김지훈 : 
- - 이다빈 : 
- - 양가현 : 
- - 김주현 : 
- 
+
 # Reference
 이 프로젝트는 원티드x위코드 백엔드 프리온보딩 과제 일환으로 freshcode에서 출제한 과제를 기반으로 만들었습니다. 
     
