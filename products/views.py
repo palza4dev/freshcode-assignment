@@ -7,7 +7,6 @@ from django.views                 import View
 from django.db                    import transaction
 
 from .models                      import Product
-from .models                      import Product
 from users.decorator              import admin_decorator, signin_decorator
 
 class ProductView(View):
